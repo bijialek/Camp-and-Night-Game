@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cj86ck87tyu6c"]
+
+[ext_resource type="Texture2D" uid="uid://cjlalbogx0hs4" path="res://Campfire/CampFire1.png" id="1_edg01"]
+[ext_resource type="Script" uid="uid://be4tos8i12wvo" path="res://campfire.gd" id="1_rq1qs"]
+[ext_resource type="Texture2D" uid="uid://cxadgot6ud23q" path="res://Campfire/CampFire2.png" id="2_rq1qs"]
+[ext_resource type="Texture2D" uid="uid://bc61vrlbb7scu" path="res://Campfire/CampFire3.png" id="3_k4nt8"]
+[ext_resource type="Texture2D" uid="uid://bn7s53ysiato4" path="res://Campfire/CampFire4.png" id="4_mpjfg"]
+[ext_resource type="Texture2D" uid="uid://c6hoojrftm825" path="res://Campfire/CampFire5.png" id="5_4ds4i"]
+[ext_resource type="Texture2D" uid="uid://md501xoclxbk" path="res://Campfire/CampFire6.png" id="6_7vqbg"]
+[ext_resource type="Texture2D" uid="uid://c8qgpe2cct6nr" path="res://Campfire/CampFire7.png" id="7_8m1no"]
+[ext_resource type="AudioStream" uid="uid://dwt33vem6djyw" path="res://Audio/Crackling Fire Sound Effect 🔥 _ Relaxing Campfire Ambience for Sleep, Focus, and Editing.mp3" id="9_k4nt8"]
+[ext_resource type="Script" uid="uid://dhgrwu4j8h61i" path="res://area_2d_campfire.gd" id="10_mpjfg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akrkc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_edg01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rq1qs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k4nt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mpjfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4ds4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7vqbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8m1no")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4nt8"]
+size = Vector2(40, 54)
+
+[node name="Campfire" type="Node2D" unique_id=1167478806]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_rq1qs")
+
+[node name="Area2D_Campfire" type="Area2D" parent="." unique_id=1847758569]
+script = ExtResource("10_mpjfg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D_Campfire" unique_id=2115254869]
+position = Vector2(302, 180)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_akrkc")
+animation = &"idle"
+frame_progress = 0.30053306
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D_Campfire" unique_id=456288447]
+stream = ExtResource("9_k4nt8")
+volume_db = -5.0
+autoplay = true
+max_distance = 700.0
+attenuation = 0.61557233
+bus = &"Sounds"
+parameters/looping = true
+
+[node name="Detector" type="CollisionShape2D" parent="Area2D_Campfire" unique_id=2026304612]
+position = Vector2(302, 183)
+shape = SubResource("RectangleShape2D_k4nt8")
+
+[node name="Label" type="Label" parent="Area2D_Campfire" unique_id=776991208]
+offset_left = 202.0
+offset_top = 56.0
+offset_right = 416.0
+offset_bottom = 79.0
+text = "Press Q to Make a Campfire"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="Area2D_Campfire" to="Area2D_Campfire" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D_Campfire" to="Area2D_Campfire" method="_on_body_exited"]

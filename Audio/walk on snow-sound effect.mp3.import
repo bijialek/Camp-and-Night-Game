@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fnr3a6hg55bs"
+path="res://.godot/imported/walk on snow-sound effect.mp3-c7a444b6a8ef5a835a69a08dbd2f7865.mp3str"
+
+[deps]
+
+source_file="res://Audio/walk on snow-sound effect.mp3"
+dest_files=["res://.godot/imported/walk on snow-sound effect.mp3-c7a444b6a8ef5a835a69a08dbd2f7865.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

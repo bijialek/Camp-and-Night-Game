@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://t8fmrtwdahqm"]
+
+[ext_resource type="Script" uid="uid://dvb632t2svoec" path="res://item_drop_1.gd" id="1_s7njg"]
+[ext_resource type="Texture2D" uid="uid://bj6msvl5earwk" path="res://Assets/Kapak minecraft diamond.png" id="2_t2rpw"]
+[ext_resource type="Shader" uid="uid://dcgrfyv35jt2y" path="res://chapter_1.gdshader" id="3_xvdre"]
+[ext_resource type="AudioStream" uid="uid://rik4ba1aqr5q" path="res://Audio/axe take-sound effect.mp3" id="4_t2rpw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jb1bg"]
+shader = ExtResource("3_xvdre")
+shader_parameter/speed = 3.0
+shader_parameter/intensity = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dnua"]
+size = Vector2(8.570328, 14.176613)
+
+[node name="ItemDrop1" type="Area2D" unique_id=1697704900 groups=["player"]]
+script = ExtResource("1_s7njg")
+
+[node name="Kapak" type="Sprite2D" parent="." unique_id=57762062]
+texture_filter = 1
+position = Vector2(354, 261)
+rotation = 4.4172792
+scale = Vector2(0.920967, 0.920967)
+texture = ExtResource("2_t2rpw")
+flip_h = true
+
+[node name="KapakHighlight" type="Sprite2D" parent="." unique_id=520055911]
+texture_filter = 1
+material = SubResource("ShaderMaterial_jb1bg")
+position = Vector2(354, 261)
+rotation = 4.4172792
+scale = Vector2(0.920967, 0.920967)
+texture = ExtResource("2_t2rpw")
+flip_h = true
+
+[node name="Detector" type="CollisionShape2D" parent="." unique_id=190394345]
+visible = false
+position = Vector2(353.72662, 262.1167)
+rotation = 0.5339769
+shape = SubResource("RectangleShape2D_3dnua")
+
+[node name="KapakAudio" type="AudioStreamPlayer2D" parent="." unique_id=1086500501]
+stream = ExtResource("4_t2rpw")
+volume_db = -5.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

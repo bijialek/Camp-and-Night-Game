@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dsj1cmkochxdu"]
+
+[ext_resource type="Texture2D" uid="uid://c5yamvvp1cbob" path="res://Assets/Scroll1.png" id="1_1gp5o"]
+[ext_resource type="Script" uid="uid://b76f7uuapkmjf" path="res://item_drop_3.gd" id="1_cnkdl"]
+[ext_resource type="Shader" uid="uid://dcgrfyv35jt2y" path="res://chapter_1.gdshader" id="2_cnkdl"]
+[ext_resource type="AudioStream" uid="uid://p5al08d536bu" path="res://Audio/paper grab-sound effect.mp3" id="4_hjhj2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21r24"]
+shader = ExtResource("2_cnkdl")
+shader_parameter/speed = 3.0
+shader_parameter/intensity = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbg23"]
+size = Vector2(16, 15)
+
+[node name="ItemDrop3" type="Area2D" unique_id=1723272371]
+script = ExtResource("1_cnkdl")
+
+[node name="Surat" type="Sprite2D" parent="." unique_id=1763602389]
+texture_filter = 1
+position = Vector2(1369.9999, 263)
+scale = Vector2(0.53124905, 0.53124905)
+texture = ExtResource("1_1gp5o")
+
+[node name="SuratHighlight" type="Sprite2D" parent="." unique_id=1935285981]
+texture_filter = 1
+material = SubResource("ShaderMaterial_21r24")
+position = Vector2(1369.9999, 263)
+scale = Vector2(0.53124905, 0.53124905)
+texture = ExtResource("1_1gp5o")
+
+[node name="Detector" type="CollisionShape2D" parent="." unique_id=961469907]
+visible = false
+position = Vector2(1370, 262.5)
+shape = SubResource("RectangleShape2D_jbg23")
+
+[node name="SuratAudio" type="AudioStreamPlayer2D" parent="." unique_id=1921573470]
+stream = ExtResource("4_hjhj2")
+volume_db = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

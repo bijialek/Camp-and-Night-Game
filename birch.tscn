@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://56rabxcj6ive"]
+
+[ext_resource type="Script" uid="uid://cthfg6hl84rsm" path="res://birch.gd" id="1_sx03o"]
+[ext_resource type="Texture2D" uid="uid://vvaac8h5nhty" path="res://Tiles/Birch3.png" id="2_j37cu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl81w"]
+size = Vector2(20, 104)
+
+[node name="Birch" type="Area2D" unique_id=1760487158 groups=["player"]]
+position = Vector2(320, 283)
+script = ExtResource("1_sx03o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=832544031]
+texture_filter = 1
+texture = ExtResource("2_j37cu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2035643017]
+position = Vector2(3, 4)
+shape = SubResource("RectangleShape2D_dl81w")
+
+[node name="Label" type="Label" parent="." unique_id=1917805992]
+offset_left = -67.0
+offset_top = -78.0
+offset_right = 77.0
+offset_bottom = -55.0
+text = "Press Q to Interact"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

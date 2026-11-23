@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7qnookpew63u"
+path="res://.godot/imported/axe hitting solid wood.mp3-6e1f242c2a40d9682b1cf952bfd14cc9.mp3str"
+
+[deps]
+
+source_file="res://Audio/axe hitting solid wood.mp3"
+dest_files=["res://.godot/imported/axe hitting solid wood.mp3-6e1f242c2a40d9682b1cf952bfd14cc9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

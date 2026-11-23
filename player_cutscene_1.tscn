@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://bluwg2mcimgjl"]
+
+[ext_resource type="Script" uid="uid://7f7ilxuy4o8m" path="res://player_cutscene_1.gd" id="1_cy0ne"]
+[ext_resource type="Texture2D" uid="uid://bxyu3bcy3uait" path="res://Player (U)/Player Wake Up 64x64.png" id="1_vj70d"]
+[ext_resource type="Texture2D" uid="uid://yubyotu64hpl" path="res://Player/player bangun.png" id="3_lmtb2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp4g3"]
+atlas = ExtResource("1_vj70d")
+region = Rect2(58, 0, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy0ne"]
+atlas = ExtResource("1_vj70d")
+region = Rect2(0, 0, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s46it"]
+atlas = ExtResource("3_lmtb2")
+region = Rect2(464, 0, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asd05"]
+atlas = ExtResource("3_lmtb2")
+region = Rect2(406, 0, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21g1g"]
+atlas = ExtResource("3_lmtb2")
+region = Rect2(290, 0, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00svd"]
+atlas = ExtResource("3_lmtb2")
+region = Rect2(232, 0, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8f1r"]
+atlas = ExtResource("3_lmtb2")
+region = Rect2(174, 0, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mg7d"]
+atlas = ExtResource("3_lmtb2")
+region = Rect2(58, 0, 58, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6w5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp4g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp4g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy0ne")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s46it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s46it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asd05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asd05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asd05")
+}],
+"loop": false,
+"name": &"sleep",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21g1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00svd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00svd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8f1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8f1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mg7d")
+}],
+"loop": false,
+"name": &"wake_up",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_cy0ne"]
+resource_name = "cutscene_wake_up"
+length = 10.0
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"sleep",
+"time": 0.008534905
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"wake_up",
+"time": 2.0142374
+}]
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 2.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_sleep"
+}, {
+"args": [],
+"method": &"play_wakeup"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lmtb2"]
+_data = {
+&"cutscene_wake_up": SubResource("Animation_cy0ne")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj70d"]
+size = Vector2(28, 5)
+
+[node name="Player" type="CharacterBody2D" unique_id=1181698119]
+script = ExtResource("1_cy0ne")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=476795329]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_p6w5j")
+animation = &"sleep"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1826391753]
+libraries/ = SubResource("AnimationLibrary_lmtb2")
+autoplay = &"cutscene_wake_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=302882710]
+visible = false
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_vj70d")
